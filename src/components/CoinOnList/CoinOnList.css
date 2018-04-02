@@ -1,0 +1,17 @@
+.CoinOnList {
+    width: 100%;
+    height: 100px;
+    outline: 1px dashed #ccc;
+    display: flex;
+    justify-content: space-around;
+}
+
+.CoinOnList:nth-child(odd) {
+    background: white;
+}
+
+@media (max-width: 800px) {
+    .CoinOnList {
+        width: 100%;
+    }
+}
