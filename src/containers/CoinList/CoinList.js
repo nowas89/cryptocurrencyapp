@@ -1,19 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as actions from "../../store/action";
 
 import classes from "./CoinList.css";
 // import Button from "../../components/UI/Button/Button";
-// import Coin from "../Coin/Coin";
+import CoinOnList from "../../components/CoinOnList/CoinOnList";
 import SearchLive from "../SearchLive/SearchLive";
 
 class CoinList extends Component {
-  state = {
-    itemOnList: []
-  };
-
   render() {
     return (
       <div className={classes.CoinList}>
+        {this.props.itemOnList.length > 0
+          ? this.props.itemOnList.map(item => (
+              <CoinOnList
+                key={item.name}
+                name={item.name}
+                priceBtc={item.price_btc}
+                priceUsd={item.price_usd}
+                percent={item.percent24}
+                clicked={() => this.props.openCard(item)}
+              />
+            ))
+          : null}
         <SearchLive />
       </div>
     );
@@ -28,7 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    pushCoinToList: () => dispatch({ type: "pushCoinToItemList" })
+    onAddItemToList: item => dispatch(actions.openCard(item))
   };
 };
 

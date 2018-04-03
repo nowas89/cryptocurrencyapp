@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 
 import CoinOnList from "../../components/CoinOnList/CoinOnList";
 import classes from "./SearchLive.css";
+import * as actions from "../../store/action";
 
 class SearchLive extends Component {
   state = {
     searchString: "",
     isLoading: false,
-    coin: {},
-    itemOnList: []
+    coin: {}
   };
 
   componentDidMount() {
@@ -63,12 +63,12 @@ class SearchLive extends Component {
                 priceBtc={item.price_btc}
                 priceUsd={item.price_usd}
                 percent={item.percent24}
-                clicked={() => this.addHandlerToList(item)}
+                clicked={() => this.props.onAddItemToList(item)}
               />
             ))
           : null;
     }
-
+    console.log(this.props.itemOnList);
     return (
       <div>
         <input
@@ -86,13 +86,14 @@ class SearchLive extends Component {
 
 const mapStateToProps = state => {
   return {
-    itemOnList: state.itemOnList
+    itemOnList: state.itemOnList,
+    coin: state.coin
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    pushCoinToList: () => dispatch({ type: "pushCoinToItemList" })
+    onAddItemToList: item => dispatch(actions.addItemToList(item))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SearchLive);

@@ -1,23 +1,30 @@
+import * as actionTypes from "./actionTypes";
+
 const initialState = {
-    coin: {
+  itemOnList: []
+};
 
-    },
-    itemOnList: []
-}
-
+export const addItemToList = (state, action) => {
+  return {
+    ...state,
+    itemOnList: state.itemOnList.concat(action.item)
+  };
+};
+export const openCard = (state, action) => {
+  return {
+    ...state
+  };
+};
 
 const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case actionTypes.ADD_ITEM_TO_LIST:
+      return addItemToList(state, action);
+    case actionTypes.OPEN_ITEM_CARD:
+      return openCard(state, action);
+    default:
+      return state;
+  }
+};
 
-    if (action.type === "pushCoinToItemList") {
-        return {
-            ...state
-            // itemOnList: state.itemOnList.concat()
-
-        }
-    }
-
-
-    return state
-}
-
-export default reducer
+export default reducer;
