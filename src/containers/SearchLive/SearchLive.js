@@ -33,14 +33,13 @@ class SearchLive extends Component {
   };
 
   addHandlerToList = id => {
-    const asd = this.state.itemOnList.concat({ id: id });
+    const asd = this.props.itemOnList.concat({ id: id });
     this.setState({
       ...this.state,
       itemOnList: asd
     });
-    console.log(this.state.itemOnList);
+    console.log(asd);
   };
-
   render() {
     let data = this.state.coin,
       searchString = this.state.searchString.trim().toLowerCase();
@@ -50,7 +49,6 @@ class SearchLive extends Component {
         return coin.name.toLowerCase().includes(this.state.searchString);
       });
     }
-
     let visibleList = null;
 
     if (searchString !== "") {
@@ -58,7 +56,7 @@ class SearchLive extends Component {
         this.state.isLoading && this.state.coin
           ? data.map(item => (
               <CoinOnList
-                key={item.name}
+                key={item.id}
                 name={item.name}
                 priceBtc={item.price_btc}
                 priceUsd={item.price_usd}
@@ -68,7 +66,7 @@ class SearchLive extends Component {
             ))
           : null;
     }
-    console.log(this.props.itemOnList);
+
     return (
       <div>
         <input

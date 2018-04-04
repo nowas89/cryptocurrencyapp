@@ -14,7 +14,7 @@ class CoinList extends Component {
         {this.props.itemOnList.length > 0
           ? this.props.itemOnList.map(item => (
               <CoinOnList
-                key={item.name}
+                key={item.id}
                 name={item.name}
                 priceBtc={item.price_btc}
                 priceUsd={item.price_usd}
