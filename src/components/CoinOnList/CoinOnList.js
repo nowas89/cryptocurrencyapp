@@ -1,6 +1,7 @@
 import React from "react";
 
 import classes from "./CoinOnList.css";
+import OpenCard from '../../containers/OpenCard/OpenCard'
 
 const CoinOnList = props => {
   return (
@@ -17,6 +18,7 @@ const CoinOnList = props => {
       <span>
         <p> 24 h Change: </p> {props.percent}
       </span>
+      {props.isOnList ? <OpenCard /> : null}
     </div>
   );
 };

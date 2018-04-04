@@ -21,7 +21,8 @@ class SearchLive extends Component {
           name: coin.name,
           price_btc: coin.price_btc,
           price_usd: coin.price_usd,
-          percent24: coin.percent_change_24h
+          percent24: coin.percent_change_24h,
+          isOnList: false
         }))
       )
       .then(coin => this.setState({ coin, isLoading: true }))
@@ -38,7 +39,7 @@ class SearchLive extends Component {
       ...this.state,
       itemOnList: asd
     });
-    console.log(this.state.itemOnList);
+
   };
 
   render() {
@@ -68,7 +69,7 @@ class SearchLive extends Component {
             ))
           : null;
     }
-    console.log(this.props.itemOnList);
+
     return (
       <div>
         <input

@@ -5,14 +5,26 @@ const initialState = {
 };
 
 export const addItemToList = (state, action) => {
+// if(state.itemOnList[action.item].key)
+console.log(action.item)
   return {
     ...state,
     itemOnList: state.itemOnList.concat(action.item)
   };
 };
+
+
 export const openCard = (state, action) => {
+
+
   return {
-    ...state
+    ...state,
+    itemOnList: [
+    [...action.item] = {
+      ...action.item,
+isOnList: !action.item.isOnList
+    }
+  ]
   };
 };
 

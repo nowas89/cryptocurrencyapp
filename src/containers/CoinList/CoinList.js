@@ -8,7 +8,9 @@ import CoinOnList from "../../components/CoinOnList/CoinOnList";
 import SearchLive from "../SearchLive/SearchLive";
 
 class CoinList extends Component {
+  
   render() {
+    console.log(this.props.itemOnList)
     return (
       <div className={classes.CoinList}>
         {this.props.itemOnList.length > 0
@@ -19,7 +21,8 @@ class CoinList extends Component {
                 priceBtc={item.price_btc}
                 priceUsd={item.price_usd}
                 percent={item.percent24}
-                clicked={() => this.props.openCard(item)}
+                clicked={() => this.props.onCardOpening(item)}
+                isOnList={item.isOnList}
               />
             ))
           : null}
@@ -37,7 +40,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddItemToList: item => dispatch(actions.openCard(item))
+    onCardOpening: item => dispatch(actions.openCard(item))
   };
 };
 
