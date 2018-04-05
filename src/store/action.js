@@ -1,10 +1,11 @@
 import * as actionTypes from './actionTypes';
 
 
-export const addItemToList = (item) => {
+export const addItemToList = (item, name) => {
     return {
         type: actionTypes.ADD_ITEM_TO_LIST,
-        item: item
+        item: item,
+        name: name
     };
 }
 export const openCard = (item) => {

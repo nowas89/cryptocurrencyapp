@@ -5,26 +5,46 @@ const initialState = {
 };
 
 export const addItemToList = (state, action) => {
+<<<<<<< HEAD
 // if(state.itemOnList[action.item].key)
 console.log(action.item.name, state.itemOnList)
+=======
+  const newAr = () => {
+    if (
+      state.itemOnList.length > 0 &&
+      state.itemOnList.find(user => user.name === action.item.name)
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+  if (!newAr()) {
+    alert("That Coin Was Added early!!");
+  }
+
+  console.log(newAr());
+  console.log(state.itemOnList);
+>>>>>>> a9deeed8e840eafd589f1553776f4ff6573f6eed
   return {
     ...state,
-    itemOnList: state.itemOnList.concat(action.item)
+    itemOnList: newAr()
+      ? state.itemOnList.concat(action.item)
+      : state.itemOnList
   };
 };
 
+// itemOnList: state.itemOnList.concat(action.item)
 
 export const openCard = (state, action) => {
-
-
   return {
     ...state,
     itemOnList: [
-    [...action.item] = {
-      ...action.item,
-isOnList: !action.item.isOnList
-    }
-  ]
+      ([...action.item] = {
+        ...action.item,
+        isOnList: !action.item.isOnList
+      })
+    ]
   };
 };
 
