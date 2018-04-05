@@ -6,7 +6,7 @@ const initialState = {
 
 export const addItemToList = (state, action) => {
 // if(state.itemOnList[action.item].key)
-console.log(action.item)
+console.log(action.item.name, state.itemOnList)
   return {
     ...state,
     itemOnList: state.itemOnList.concat(action.item)
