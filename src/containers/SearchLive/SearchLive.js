@@ -7,47 +7,31 @@ import * as actions from "../../store/action";
 
 class SearchLive extends Component {
   state = {
-    searchString: "",
-    isLoading: false,
-    coin: {}
+    searchString: ""
   };
 
   componentDidMount() {
-    fetch("https://api.coinmarketcap.com/v1/ticker/")
-      .then(res => res.json())
-      .then(resData =>
-        resData.map(coin => ({
-          id: coin.id,
-          name: coin.name,
-          price_btc: coin.price_btc,
-          price_usd: coin.price_usd,
-          percent24: coin.percent_change_24h,
-          isOnList: false
-        }))
-      )
-      .then(coin => this.setState({ coin, isLoading: true }))
-      .catch(err => console.log(err));
+    this.props.onCoinsInit();
   }
 
   handleChange = e => {
     this.setState({ searchString: e.target.value.toLowerCase() });
   };
 
-  addHandlerToList = id => {
-    const asd = this.state.itemOnList.concat({ id: id });
-    this.setState({
-      ...this.state,
-      itemOnList: asd
-    });
-
-  };
-
   render() {
-    let data = this.state.coin,
-      searchString = this.state.searchString.trim().toLowerCase();
+    let updatedArray = this.props.coins.map(coin => ({
+      id: coin.id,
+      name: coin.name,
+      price_btc: coin.price_btc,
+      price_usd: coin.price_usd,
+      percent24: coin.percent_change_24h,
+      isOnList: false
+    }));
+
+    let searchString = this.state.searchString.trim().toLowerCase();
 
     if (searchString.length > 0) {
-      data = data.filter(coin => {
+      updatedArray = updatedArray.filter(coin => {
         return coin.name.toLowerCase().includes(this.state.searchString);
       });
     }
@@ -56,8 +40,8 @@ class SearchLive extends Component {
 
     if (searchString !== "") {
       visibleList =
-        this.state.isLoading && this.state.coin
-          ? data.map(item => (
+        this.props.isLoading && this.props.coins
+          ? updatedArray.map(item => (
               <CoinOnList
                 key={item.name}
                 name={item.name}
@@ -77,8 +61,9 @@ class SearchLive extends Component {
           type="text"
           value={this.state.searchString}
           onChange={e => this.handleChange(e)}
-          placeholder="Type here"
+          placeholder="Add currency"
         />
+
         {visibleList}
       </div>
     );
@@ -88,13 +73,15 @@ class SearchLive extends Component {
 const mapStateToProps = state => {
   return {
     itemOnList: state.itemOnList,
-    coin: state.coin
+    coins: state.coins,
+    isLoading: state.isLoading
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddItemToList: item => dispatch(actions.addItemToList(item))
+    onAddItemToList: item => dispatch(actions.addItemToList(item)),
+    onCoinsInit: () => dispatch(actions.initCoins())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SearchLive);

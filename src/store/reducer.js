@@ -1,14 +1,12 @@
 import * as actionTypes from "./actionTypes";
 
 const initialState = {
-  itemOnList: []
+  itemOnList: [],
+  coins: [],
+  isLoading: false
 };
 
 export const addItemToList = (state, action) => {
-<<<<<<< HEAD
-// if(state.itemOnList[action.item].key)
-console.log(action.item.name, state.itemOnList)
-=======
   const newAr = () => {
     if (
       state.itemOnList.length > 0 &&
@@ -23,9 +21,6 @@ console.log(action.item.name, state.itemOnList)
     alert("That Coin Was Added early!!");
   }
 
-  console.log(newAr());
-  console.log(state.itemOnList);
->>>>>>> a9deeed8e840eafd589f1553776f4ff6573f6eed
   return {
     ...state,
     itemOnList: newAr()
@@ -48,12 +43,22 @@ export const openCard = (state, action) => {
   };
 };
 
+export const initCoins = (state, action) => {
+  return {
+    ...state,
+    coins: action.data,
+    isLoading: true
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_ITEM_TO_LIST:
       return addItemToList(state, action);
     case actionTypes.OPEN_ITEM_CARD:
       return openCard(state, action);
+    case actionTypes.COINS_INIT:
+      return initCoins(state, action);
     default:
       return state;
   }
