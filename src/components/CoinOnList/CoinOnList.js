@@ -1,7 +1,7 @@
 import React from "react";
 
 import classes from "./CoinOnList.css";
-import OpenCard from '../../containers/OpenCard/OpenCard'
+import OpenCard from "../../containers/OpenCard/OpenCard";
 
 const CoinOnList = props => {
   return (

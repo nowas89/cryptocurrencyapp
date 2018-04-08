@@ -30,3 +30,31 @@ export const initCoins = () => {
             });
     };
 };
+
+export const deliveryData = item => {
+    return {
+        type: actionTypes.DELIVERY_DATA,
+        item: item
+    }
+}
+export const updateBTC = (e, item) => {
+    return {
+        type: actionTypes.UPDATE_BTC,
+        e: e.target.value,
+        item: item
+    }
+}
+export const updateUSD = (e, item) => {
+    return {
+        type: actionTypes.UPDATE_USD,
+        e: e.target.value,
+        item: item
+    }
+}
+export const updateQuantity = (e, item) => {
+    return {
+        type: actionTypes.UPDATE_QUANTITY,
+        e: e.target.value,
+        item: item
+    }
+}

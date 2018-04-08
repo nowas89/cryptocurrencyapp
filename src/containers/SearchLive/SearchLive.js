@@ -25,7 +25,10 @@ class SearchLive extends Component {
       price_btc: coin.price_btc,
       price_usd: coin.price_usd,
       percent24: coin.percent_change_24h,
-      isOnList: false
+      isOnList: false,
+      boughtValue: 0,
+      quantity: 0,
+      btcUsdVal: 0
     }));
 
     let searchString = this.state.searchString.trim().toLowerCase();
@@ -63,8 +66,7 @@ class SearchLive extends Component {
           onChange={e => this.handleChange(e)}
           placeholder="Add currency"
         />
-
-        {visibleList}
+        {visibleList}{" "}
       </div>
     );
   }

@@ -37,7 +37,7 @@ export const openCard = (state, action) => {
     itemOnList: [
       ([...action.item] = {
         ...action.item,
-        isOnList: !action.item.isOnList
+        isOnList: true
       })
     ]
   };
@@ -51,6 +51,50 @@ export const initCoins = (state, action) => {
   };
 };
 
+export const deliveryData = (state, action) => {
+  console.log("delivery data is recived");
+  return {
+    ...state
+  };
+};
+
+export const updateBTC = (state, action) => {
+  console.log(action, action.e);
+  return {
+    ...state,
+    itemOnList: [
+      ([...action.item] = {
+        ...action.item,
+        boughtValue: action.e
+      })
+    ]
+  };
+};
+export const updateUSD = (state, action) => {
+  console.log(action, action.e);
+  return {
+    ...state,
+    itemOnList: [
+      ([...action.item] = {
+        ...action.item,
+        btcUsdVal: action.e
+      })
+    ]
+  };
+};
+export const updateQuantity = (state, action) => {
+  console.log(action, action.e);
+  return {
+    ...state,
+    itemOnList: [
+      ([...action.item] = {
+        ...action.item,
+        quantity: action.e
+      })
+    ]
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_ITEM_TO_LIST:
@@ -59,6 +103,14 @@ const reducer = (state = initialState, action) => {
       return openCard(state, action);
     case actionTypes.COINS_INIT:
       return initCoins(state, action);
+    case actionTypes.DELIVERY_DATA:
+      return deliveryData(state, action);
+    case actionTypes.UPDATE_USD:
+      return updateUSD(state, action);
+    case actionTypes.UPDATE_BTC:
+      return updateBTC(state, action);
+    case actionTypes.UPDATE_QUANTITY:
+      return updateQuantity(state, action);
     default:
       return state;
   }

@@ -19,7 +19,7 @@ class CoinList extends Component {
                 priceBtc={item.price_btc}
                 priceUsd={item.price_usd}
                 percent={item.percent24}
-                clicked={() => this.props.onCardOpening(item, item.name)}
+                clicked={() => this.props.onCardOpening(item)}
                 isOnList={item.isOnList}
               />
             ))
@@ -38,7 +38,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onCardOpening: (item, id) => dispatch(actions.openCard(item, id))
+    onCardOpening: item => dispatch(actions.openCard(item))
   };
 };
 
