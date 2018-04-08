@@ -5,74 +5,95 @@ import classes from "./Card.css";
 class Card extends Component {
   render() {
     let btcTotalValue = this.props.boughtValue * this.props.quantity,
-      usdTotalValue = Number(btcTotalValue) * Number(this.props.btcUsdVal);
+      usdTotalValue = this.props.btcUsdVal * this.props.quantity;
     return (
       <div className={classes.Card}>
+        <button className={classes.Button}> BACK </button>
         <div className={classes.Sections}>
-          <h3> Coin Monitor </h3>
+          <h2> Coin Monitor </h2>
           <span>
-            <h4> Coin Name: </h4> <h3>{this.props.name}</h3>
+            <h2> Coin Name: </h2> <h3>{this.props.name}</h3>
           </span>
           <span>
-            <h4> Price: </h4> <h3>{this.props.btcPrice}</h3>
+            <h2> Price: </h2> <h3>{this.props.btcPrice}</h3>
           </span>
           <span>
-            <h4> Price USD: </h4> <h3>{this.props.usdPrice}</h3>
+            <h2> Price USD: </h2> <h3>{this.props.usdPrice}</h3>
           </span>
           <span>
-            <h4> 24 h % Change:</h4> <h3> {this.props.percent24} </h3>
+            <h2> 24 h % Change:</h2> <h3> {this.props.percent24} </h3>
           </span>
         </div>
         <div className={classes.Sections}>
-          <h3> Holdings </h3>
-          <div className={classes.CardCointainer}>
-            <h4> Bought Value </h4>
+          <h2> Holdings </h2>
+          <span className={classes.CardCointainer}>
+            <h2> PRICE IN BTC when was bought </h2>
             <input
               type="number"
               placeholder="type bought value"
               onChange={this.props.btcUpdateVal}
               value={this.props.boughtValue}
             />
-          </div>
-          <div className={classes.CardCointainer}>
-            <h4> Quantity </h4>
+          </span>
+          <span className={classes.CardCointainer}>
+            <h2> Quantity </h2>
             <input
               type="number"
               placeholder="type quantity"
               onChange={this.props.quantityVal}
               value={this.props.quantity}
             />
-          </div>
-          <div className={classes.CardCointainer}>
-            <h4> USD BitCoin Value when was bought </h4>
+          </span>
+          <span className={classes.CardCointainer}>
+            <h2> PRICE IN USD when was bought </h2>
             <input
               type="number"
               placeholder="type btc bought price"
               onChange={this.props.usdBoughtVal}
               value={this.props.btcUsdVal}
             />
-          </div>
-          <h4>
-            Total BTC value:
-            {this.props.boughtValue > 0 && this.props.quantity > 0
-              ? btcTotalValue
-              : 0}
-          </h4>
-          <h4>
-            Total USD value:
-            {btcTotalValue > 0 && this.props.btcUsdVal > 0 ? usdTotalValue : 0}
-          </h4>
+          </span>
+          <span>
+            <h2>Total BTC value:</h2>
+            <h3>
+              {this.props.boughtValue > 0 && this.props.quantity > 0
+                ? btcTotalValue.toFixed(8)
+                : 0}
+            </h3>
+          </span>
+          <span>
+            <h2>Total USD value:</h2>
+            <h3>
+              {btcTotalValue > 0 && this.props.btcUsdVal > 0
+                ? usdTotalValue.toFixed(2)
+                : 0}
+            </h3>
+          </span>
         </div>
         <div className={classes.Sections}>
-          <h3> CRYPTO MONITOR </h3> <h4> Bought Value COIN </h4>
-          <h4> TOTAL BTC VALUE - CURRENT BTC VALUE </h4>
-          {btcTotalValue > 0
-            ? btcTotalValue - this.props.btcPrice * this.props.quantity
-            : 0}
-          <h4> TOTAL USD VALUE - CURRENT USD VALUE </h4>
-          {usdTotalValue > 0
-            ? usdTotalValue - this.props.usdPrice * this.props.quantity
-            : 0}
+          <h2> PROFIT MONITOR </h2>
+          <span>
+            <h2> {this.props.name} Profit</h2>
+            <h3>
+              {btcTotalValue > 0
+                ? (
+                    this.props.btcPrice * this.props.quantity -
+                    btcTotalValue
+                  ).toFixed(8)
+                : 0}
+            </h3>
+          </span>
+          <span>
+            <h2> {this.props.name} USD Profit </h2>
+            <h3>
+              {usdTotalValue > 0
+                ? (
+                    this.props.usdPrice * this.props.quantity -
+                    usdTotalValue
+                  ).toFixed(2)
+                : 0}
+            </h3>
+          </span>
         </div>
       </div>
     );
