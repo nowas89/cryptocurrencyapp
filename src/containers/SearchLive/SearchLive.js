@@ -28,7 +28,8 @@ class SearchLive extends Component {
       isOnList: false,
       boughtValue: 0,
       quantity: 0,
-      btcUsdVal: 0
+      btcUsdVal: 0,
+      listIsOpen: false
     }));
 
     let searchString = this.state.searchString.trim().toLowerCase();
@@ -65,7 +66,7 @@ class SearchLive extends Component {
           value={this.state.searchString}
           onChange={e => this.handleChange(e)}
           placeholder="Add currency"
-        />
+        />{" "}
         {visibleList}{" "}
       </div>
     );
