@@ -27,7 +27,7 @@ export const addItemToList = (state, action) => {
             state.itemOnList.concat(([...action.item] = {
                 ...action.item,
                 isOnList: true
-            })) : state.itemOnList,
+            })) : state.itemOnList
 
     };
 };
@@ -86,13 +86,24 @@ export const updateUSD = (state, action) => {
     };
 };
 export const updateQuantity = (state, action) => {
-    console.log(action, action.e);
     return {
         ...state,
         itemOnList: [
             ([...action.item] = {
                 ...action.item,
                 quantity: action.e
+            })
+        ]
+    };
+};
+export const imBack = (state, action) => {
+    console.log(action.item.listIsOpen);
+    return {
+        ...state,
+        itemOnList: [
+            ([...action.item] = {
+                ...action.item,
+                listIsOpen: false
             })
         ]
     };
@@ -114,6 +125,8 @@ const reducer = (state = initialState, action) => {
             return updateBTC(state, action);
         case actionTypes.UPDATE_QUANTITY:
             return updateQuantity(state, action);
+        case actionTypes.CLICKED_BACK:
+            return imBack(state, action);
         default:
             return state;
     }

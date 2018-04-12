@@ -5,20 +5,22 @@ import OpenCard from "../../containers/OpenCard/OpenCard";
 
 const CoinOnList = props => {
   return (
-    <div className={classes.CoinOnList} onClick={props.clicked}>
-      <span>
-        <p> Coin name: </p> {props.name}{" "}
-      </span>{" "}
-      <span>
-        <p> Coin Price Btc: </p> {props.priceBtc}{" "}
-      </span>{" "}
-      <span>
-        <p> Coin Price USD: </p> {props.priceUsd}{" "}
-      </span>{" "}
-      <span>
-        <p> 24 h Change: </p> {props.percent}{" "}
-      </span>{" "}
-      {props.listIsOpen ? <OpenCard /> : null}{" "}
+    <div>
+      <div className={classes.CoinOnList} onClick={props.clicked}>
+        <span>
+          <p> Coin name: </p> {props.name}
+        </span>
+        <span>
+          <p> Coin Price Btc: </p> {props.priceBtc}
+        </span>
+        <span>
+          <p> Coin Price USD: </p> {props.priceUsd}
+        </span>
+        <span>
+          <p> 24 h Change: </p> {props.percent}
+        </span>
+      </div>
+      {props.listIsOpen ? <OpenCard /> : null}
     </div>
   );
 };

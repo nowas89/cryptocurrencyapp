@@ -1,10 +1,9 @@
 import * as actionTypes from "./actionTypes";
 
-export const addItemToList = (item, name) => {
+export const addItemToList = (item) => {
     return {
         type: actionTypes.ADD_ITEM_TO_LIST,
-        item: item,
-        name: name
+        item: item
     };
 };
 export const openCard = item => {
@@ -56,5 +55,12 @@ export const updateQuantity = (e, item) => {
         type: actionTypes.UPDATE_QUANTITY,
         e: e.target.value,
         item: item
+    }
+}
+export const imBack = (item) => {
+    return {
+        type: actionTypes.CLICKED_BACK,
+        item: item
+
     }
 }

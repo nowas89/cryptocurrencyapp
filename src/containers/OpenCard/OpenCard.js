@@ -23,6 +23,7 @@ class OpenCard extends Component {
             quantity={item.quantity}
             boughtValue={item.boughtValue}
             btcUsdVal={item.btcUsdVal}
+            imBack={() => this.props.onTouchingBack(item)}
           />
         ))}
       </div>
@@ -40,7 +41,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onBtcBoughtVal: (e, item) => dispatch(actions.updateBTC(e, item)),
     onUpdateQuantity: (e, item) => dispatch(actions.updateQuantity(e, item)),
-    onUpdateUsdBoughtVal: (e, item) => dispatch(actions.updateUSD(e, item))
+    onUpdateUsdBoughtVal: (e, item) => dispatch(actions.updateUSD(e, item)),
+    onTouchingBack: item => dispatch(actions.imBack(item))
   };
 };
 

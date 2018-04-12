@@ -8,7 +8,7 @@ class Card extends Component {
       usdTotalValue = this.props.btcUsdVal * this.props.quantity;
     return (
       <div className={classes.Card}>
-        <button className={classes.Button}> BACK </button>
+        <button onClick={this.props.imBack}> BACK </button>
         <div className={classes.Sections}>
           <h2> Coin Monitor </h2>
           <span>

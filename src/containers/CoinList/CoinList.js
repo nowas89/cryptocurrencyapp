@@ -11,7 +11,6 @@ class CoinList extends Component {
   render() {
     return (
       <div className={classes.CoinList}>
-        {" "}
         {this.props.itemOnList.length > 0
           ? this.props.itemOnList.map(item => (
               <CoinOnList
@@ -25,7 +24,7 @@ class CoinList extends Component {
                 listIsOpen={item.listIsOpen}
               />
             ))
-          : null}{" "}
+          : null}
         <SearchLive />
       </div>
     );
