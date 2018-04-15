@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 
+
 const initialState = {
     itemOnList: [],
     coins: [],
@@ -35,22 +36,31 @@ export const addItemToList = (state, action) => {
 // itemOnList: state.itemOnList.concat(action.item)
 
 export const openCard = (state, action) => {
+
+
     return {
         ...state,
-        itemOnList: [
-            ([...action.item] = {
-                ...action.item,
-                listIsOpen: true
-            })
-        ]
-    };
+        itemOnList: state.itemOnList.map(item => {
+            if (item.id === action.item.id) {
+                return {
+                    ...item,
+                    listIsOpen: true
+                }
+            } else {
+                return item;
+            }
+        })
+    }
 };
 
 export const initCoins = (state, action) => {
+
+   
     return {
         ...state,
         coins: action.data,
         isLoading: true
+      
     };
 };
 
@@ -63,15 +73,20 @@ export const deliveryData = (state, action) => {
 
 export const updateBTC = (state, action) => {
     console.log(action, action.e);
+
     return {
         ...state,
-        itemOnList: [
-            ([...action.item] = {
-                ...action.item,
-                boughtValue: action.e
-            })
-        ]
-    };
+        itemOnList: state.itemOnList.map(item => {
+            if (item.id === action.item.id) {
+                return {
+                    ...item,
+                    boughtValue: action.e
+                }
+            } else {
+                return item;
+            }
+        })
+    }
 };
 export const updateUSD = (state, action) => {
     console.log(action, action.e);
@@ -100,13 +115,17 @@ export const imBack = (state, action) => {
     console.log(action.item.listIsOpen);
     return {
         ...state,
-        itemOnList: [
-            ([...action.item] = {
-                ...action.item,
-                listIsOpen: false
-            })
-        ]
-    };
+        itemOnList: state.itemOnList.map(item => {
+            if (item.id === action.item.id) {
+                return {
+                    ...item,
+                    listIsOpen: false
+                }
+            } else {
+                return item;
+            }
+        })
+    }
 };
 
 const reducer = (state = initialState, action) => {

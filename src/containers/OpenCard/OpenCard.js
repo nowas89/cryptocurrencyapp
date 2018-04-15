@@ -11,6 +11,7 @@ class OpenCard extends Component {
     return (
       <div className={classes.OpenCard}>
         {this.props.itemFromList.map(item => (
+          item.listIsOpen ?
           <Card
             key={item.name}
             name={item.name}
@@ -25,6 +26,7 @@ class OpenCard extends Component {
             btcUsdVal={item.btcUsdVal}
             imBack={() => this.props.onTouchingBack(item)}
           />
+          : null
         ))}
       </div>
     );

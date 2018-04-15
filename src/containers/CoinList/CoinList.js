@@ -8,7 +8,11 @@ import CoinOnList from "../../components/CoinOnList/CoinOnList";
 import SearchLive from "../SearchLive/SearchLive";
 
 class CoinList extends Component {
+
   render() {
+
+
+
     return (
       <div className={classes.CoinList}>
         {this.props.itemOnList.length > 0
@@ -33,7 +37,8 @@ class CoinList extends Component {
 
 const mapStateToProps = state => {
   return {
-    itemOnList: state.itemOnList
+    itemOnList: state.itemOnList,
+    coin: state.coins
   };
 };
 
