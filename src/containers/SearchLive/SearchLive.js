@@ -34,7 +34,6 @@ class SearchLive extends Component {
       date: new Date().getTime()
     }));
 
-console.log(updatedArray)
     let searchString = this.state.searchString.trim().toLowerCase();
 
     if (searchString.length > 0) {

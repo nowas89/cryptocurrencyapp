@@ -33,7 +33,6 @@ export const addItemToList = (state, action) => {
     };
 };
 
-// itemOnList: state.itemOnList.concat(action.item)
 
 export const openCard = (state, action) => {
 
@@ -92,27 +91,37 @@ export const updateUSD = (state, action) => {
     console.log(action, action.e);
     return {
         ...state,
-        itemOnList: [
-            ([...action.item] = {
-                ...action.item,
-                btcUsdVal: action.e
-            })
-        ]
-    };
+        itemOnList: state.itemOnList.map(item => {
+            if (item.id === action.item.id) {
+                return {
+                    ...item,
+                    btcUsdVal: action.e
+                }
+            } else {
+                return item;
+            }
+      
+    })
 };
+}
 export const updateQuantity = (state, action) => {
     return {
         ...state,
-        itemOnList: [
-            ([...action.item] = {
-                ...action.item,
-                quantity: action.e
-            })
-        ]
-    };
+        itemOnList: state.itemOnList.map(item => {
+            if (item.id === action.item.id) {
+                return {
+                    ...item,
+                    quantity: action.e
+                }
+            } else {
+                return item;
+            }
+      
+    })
+};
 };
 export const imBack = (state, action) => {
-    console.log(action.item.listIsOpen);
+
     return {
         ...state,
         itemOnList: state.itemOnList.map(item => {
@@ -126,6 +135,10 @@ export const imBack = (state, action) => {
             }
         })
     }
+};
+export const updateItems = (state, action) => {
+
+ 
 };
 
 const reducer = (state = initialState, action) => {
@@ -146,6 +159,9 @@ const reducer = (state = initialState, action) => {
             return updateQuantity(state, action);
         case actionTypes.CLICKED_BACK:
             return imBack(state, action);
+        case actionTypes.UPDATE_ITEMS:
+            return updateItems(state, action);
+
         default:
             return state;
     }

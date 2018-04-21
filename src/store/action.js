@@ -64,3 +64,10 @@ export const imBack = (item) => {
 
     }
 }
+export const updateItems = (array) => {
+    return {
+        type: actionTypes.UPDATE_ITEMS,
+        array: array
+
+    }
+}

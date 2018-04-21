@@ -9,14 +9,38 @@ import SearchLive from "../SearchLive/SearchLive";
 
 class CoinList extends Component {
 
+
+
   render() {
+    let newArr = [];
+    let trueList = this.props.itemOnList.filter(
+      row1 => this.props.coin.filter(row2 => row1.name === row2.name).length > 0
+    );
+    
+    trueList.map(item =>
+      this.props.coin.filter(coin => {
+        if (item.name === coin.name) {
+          newArr.push(
+            (item = {
+              ...item,
+              price_btc: coin.price_btc,
+              price_usd: coin.price_usd,
+              percent24: coin.percent_change_24h,
+              updates: true
+            })
+          );
+        }
+        return newArr;
+      })
+    );
+    console.log(newArr)
 
 
 
     return (
       <div className={classes.CoinList}>
-        {this.props.itemOnList.length > 0
-          ? this.props.itemOnList.map(item => (
+        {newArr.length > 0
+          ? newArr.map(item => (
               <CoinOnList
                 key={item.name}
                 name={item.name}
@@ -44,7 +68,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onCardOpening: item => dispatch(actions.openCard(item))
+    onCardOpening: item => dispatch(actions.openCard(item)),
+    onUpdate: item => dispatch(actions.updateItems(item))
   };
 };
 
