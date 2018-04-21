@@ -11,7 +11,7 @@ class OpenCard extends Component {
     return (
       <div className={classes.OpenCard}>
         {this.props.itemFromList.map(item => (
-          item.listIsOpen ?
+          item.listIsOpen && item.updates ?
           <Card
             key={item.name}
             name={item.name}

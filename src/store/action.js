@@ -71,3 +71,10 @@ export const updateItems = (array) => {
 
     }
 }
+export const afterInitialCoins = () => {
+    return {
+        type: actionTypes.AFTER_INITIAL_COINS
+  
+
+    }
+}

@@ -10,9 +10,14 @@ class SearchLive extends Component {
     searchString: ""
   };
 
+
+
   componentDidMount() {
     this.props.onCoinsInit();
-
+    setTimeout(() => {
+      this.props.onAfterInitialCoins()
+    }, 1000);
+  
   }
 
   handleChange = e => {
@@ -31,14 +36,22 @@ class SearchLive extends Component {
       quantity: 0,
       btcUsdVal: 0,
       listIsOpen: false,
-      date: new Date().getTime()
+      date: new Date().getTime(),
+      symbol: coin.symbol
     }));
+
+   
+
+
+
+     
+    
 
     let searchString = this.state.searchString.trim().toLowerCase();
 
     if (searchString.length > 0) {
       updatedArray = updatedArray.filter(coin => {
-        return coin.name.toLowerCase().includes(this.state.searchString);
+        return coin.name.toLowerCase().includes(this.state.searchString) || coin.symbol.toLowerCase().includes(this.state.searchString)
       });
     }
 
@@ -86,7 +99,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAddItemToList: item => dispatch(actions.addItemToList(item)),
-    onCoinsInit: () => dispatch(actions.initCoins())
+    onCoinsInit: () => dispatch(actions.initCoins()),
+    onAfterInitialCoins: () => dispatch(actions.afterInitialCoins())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SearchLive);

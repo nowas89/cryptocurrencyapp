@@ -53,13 +53,48 @@ export const openCard = (state, action) => {
 };
 
 export const initCoins = (state, action) => {
-
-   
+  
     return {
         ...state,
         coins: action.data,
         isLoading: true
       
+    };
+};
+
+
+export const afterInitialCoins = (state, action) => {
+
+  let stc = state.coins;
+  let sti = state.itemOnList;
+    let newArr = [];
+    if(sti.length > 0 && stc.length > 0) {
+    let trueList = sti.filter(
+      row1 => stc.filter(row2 => row1.name === row2.name).length > 0
+    );
+
+     trueList.map(item =>
+        stc.filter(coin => {
+        if (item.name === coin.name) {
+          newArr.push(
+            (item = {
+              ...item,
+              price_btc: coin.price_btc,
+              price_usd: coin.price_usd,
+              percent24: coin.percent_change_24h,
+              updates: true
+            })
+          );
+        }
+        return newArr;
+      })
+    ) 
+
+}
+
+    return {
+        ...state,
+      itemOnList: newArr
     };
 };
 
@@ -161,6 +196,8 @@ const reducer = (state = initialState, action) => {
             return imBack(state, action);
         case actionTypes.UPDATE_ITEMS:
             return updateItems(state, action);
+        case actionTypes.AFTER_INITIAL_COINS:
+            return afterInitialCoins(state, action);
 
         default:
             return state;
