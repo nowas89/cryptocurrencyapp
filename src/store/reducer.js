@@ -171,9 +171,13 @@ export const imBack = (state, action) => {
         })
     }
 };
-export const updateItems = (state, action) => {
-
- 
+export const deleteItem = (state, action) => {
+console.log( state.itemOnList.filter(item => item !== action.item))
+let arrayAfterDelete = state.itemOnList.filter(item => item !== action.item)
+ return {
+     ...state,
+     itemOnList: arrayAfterDelete
+ }
 };
 
 const reducer = (state = initialState, action) => {
@@ -194,10 +198,10 @@ const reducer = (state = initialState, action) => {
             return updateQuantity(state, action);
         case actionTypes.CLICKED_BACK:
             return imBack(state, action);
-        case actionTypes.UPDATE_ITEMS:
-            return updateItems(state, action);
         case actionTypes.AFTER_INITIAL_COINS:
             return afterInitialCoins(state, action);
+        case actionTypes.ON_DELETE:
+            return deleteItem(state, action);
 
         default:
             return state;

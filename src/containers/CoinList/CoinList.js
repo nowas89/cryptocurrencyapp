@@ -29,6 +29,7 @@ class CoinList extends Component {
                 clicked={() => this.props.onCardOpening(item)}
                 isOnList={item.isOnList}
                 listIsOpen={item.listIsOpen}
+                delete={() => this.props.onDelete(item)}
               />
             ))
           : null}
@@ -48,7 +49,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onCardOpening: item => dispatch(actions.openCard(item)),
-    onUpdate: item => dispatch(actions.updateItems(item))
+
+    onDelete: item => dispatch(actions.deleteItem(item))
   };
 };
 

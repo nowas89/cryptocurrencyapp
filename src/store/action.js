@@ -64,16 +64,17 @@ export const imBack = (item) => {
 
     }
 }
-export const updateItems = (array) => {
-    return {
-        type: actionTypes.UPDATE_ITEMS,
-        array: array
 
-    }
-}
 export const afterInitialCoins = () => {
     return {
         type: actionTypes.AFTER_INITIAL_COINS
+  
+    }
+}
+export const deleteItem = (item) => {
+    return {
+        type: actionTypes.ON_DELETE,
+        item: item
   
 
     }

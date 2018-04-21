@@ -2,13 +2,14 @@ import React, { Component } from "react";
 
 import classes from "./Card.css";
 
+
 class Card extends Component {
   render() {
     let btcTotalValue = this.props.boughtValue * this.props.quantity,
       usdTotalValue = this.props.btcUsdVal * this.props.quantity;
     return (
       <div className={classes.Card}>
-        <button onClick={this.props.imBack}> BACK </button>
+        <button style={{margin: '20px', padding: '5px'}}onClick={this.props.imBack}> BACK </button>
         <div className={classes.Sections}>
           <h2> Coin Monitor </h2>
           <span>

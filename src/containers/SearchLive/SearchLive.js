@@ -40,12 +40,6 @@ class SearchLive extends Component {
       symbol: coin.symbol
     }));
 
-   
-
-
-
-     
-    
 
     let searchString = this.state.searchString.trim().toLowerCase();
 
@@ -81,7 +75,7 @@ class SearchLive extends Component {
           value={this.state.searchString}
           onChange={e => this.handleChange(e)}
           placeholder="Add currency"
-        />{" "}
+        />
         {visibleList}
       </div>
     );
