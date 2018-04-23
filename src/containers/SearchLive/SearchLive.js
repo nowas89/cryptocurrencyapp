@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import CoinOnList from "../../components/CoinOnList/CoinOnList";
+// import CoinOnList from "../../components/CoinOnList/CoinOnList";
+import SearchCoin from "../../components/SearchCoin/SearchCoin"
 import classes from "./SearchLive.css";
 import * as actions from "../../store/action";
 
@@ -55,7 +56,7 @@ class SearchLive extends Component {
       visibleList =
         this.props.isLoading && this.props.coins
           ? updatedArray.map(item => (
-              <CoinOnList
+              <SearchCoin
                 key={item.name}
                 name={item.name}
                 priceBtc={item.price_btc}

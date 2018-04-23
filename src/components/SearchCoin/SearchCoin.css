@@ -1,32 +1,23 @@
-.CoinOnList {
+.SearchCoin {
   width: 100%;
   height: 100px;
   outline: 1px dashed #ccc;
   display: flex;
   justify-content: space-around;
 }
-.CoinOnListItem {
+.SearchCoinItem {
   width: 90%;
   height: 100px;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-}
-.CoinOnListItem span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  width: 100%;
 }
 
-.CoinOnList:nth-child(odd) {
+.SearchCoin:nth-child(odd) {
   background: white;
 }
 
 @media (max-width: 800px) {
-  .CoinOnList {
+  .SearchCoin {
     width: 100%;
   }
 }

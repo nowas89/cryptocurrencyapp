@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/action";
+import styled from "styled-components";
 
 import classes from "./CoinList.css";
 // import Button from "../../components/UI/Button/Button";
@@ -8,16 +9,23 @@ import CoinOnList from "../../components/CoinOnList/CoinOnList";
 import SearchLive from "../SearchLive/SearchLive";
 
 class CoinList extends Component {
-
-
-
   render() {
-
-
-
-
     return (
       <div className={classes.CoinList}>
+        <InfoTable>
+          <span>
+            <p> Coin name: </p>
+          </span>
+          <span>
+            <p> Coin Price Btc: </p>
+          </span>
+          <span>
+            <p> Coin Price USD: </p>
+          </span>
+          <span>
+            <p> 24 h Change: </p>
+          </span>
+        </InfoTable>
         {this.props.itemOnList.length > 0
           ? this.props.itemOnList.map(item => (
               <CoinOnList
@@ -38,6 +46,19 @@ class CoinList extends Component {
     );
   }
 }
+
+const InfoTable = styled.div`
+  width: 90%;
+  height: 60px;
+  outline: 1px solid red;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 1.8%;
+  span {
+
+    width: 100%;
+  }
+`;
 
 const mapStateToProps = state => {
   return {

@@ -8,18 +8,10 @@ const CoinOnList = props => {
   return (
     <div className={classes.CoinOnList}>
       <div className={classes.CoinOnListItem} onClick={props.clicked}>
-        <span>
-          <p> Coin name: </p> {props.name}
-        </span>
-        <span>
-          <p> Coin Price Btc: </p> {props.priceBtc}
-        </span>
-        <span>
-          <p> Coin Price USD: </p> {props.priceUsd}
-        </span>
-        <span>
-          <p> 24 h Change: </p> {props.percent}
-        </span>
+        <span>{props.name}</span>
+        <span>{props.priceBtc}</span>
+        <span>{props.priceUsd}</span>
+        <span>{props.percent}</span>
       </div>
       <div>
         {props.isOnList ? (
