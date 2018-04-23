@@ -1,14 +1,13 @@
 .Capitalization {
-    height: 120px;
-    width: 100%;
-    box-shadow: 0px 1px 2px #ccc;
-    text-align: center;
-    padding: 30px 0 0 0;
-    box-sizing: border-box;
+  height: 120px;
+  width: 100%;
+  text-align: center;
+  padding: 30px 0 0 0;
+  box-sizing: border-box;
 }
 
 @media (max-width: 800px) {
-    .Capitalization {
-        width: 100%;
-    }
+  .Capitalization {
+    width: 100%;
+  }
 }

@@ -1,10 +1,15 @@
 .Button {
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
-    margin-top: 30px;
+  height: 50px;
+  width: 50px;
+  margin-top: 25px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  color: rgba(204, 204, 204, 0.7);
+  font-weight: 100;
 }
 
 .Button:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
+  color: rgba(0, 0, 0, 1);
 }

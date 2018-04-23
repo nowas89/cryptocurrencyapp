@@ -13,7 +13,8 @@ class CoinList extends Component {
     return (
       <div className={classes.CoinList}>
         <InfoTable>
-          <span>
+         <div>
+         <span>
             <p> Coin name: </p>
           </span>
           <span>
@@ -25,6 +26,8 @@ class CoinList extends Component {
           <span>
             <p> 24 h Change: </p>
           </span>
+         </div>
+        
         </InfoTable>
         {this.props.itemOnList.length > 0
           ? this.props.itemOnList.map(item => (
@@ -47,17 +50,23 @@ class CoinList extends Component {
   }
 }
 
-const InfoTable = styled.div`
+const InfoTable = styled.section`
+width: 100%;
+background: rgba(204, 204, 204, .1);
+
+div{
   width: 90%;
-  height: 60px;
-  outline: 1px solid red;
   display: flex;
   justify-content: space-around;
   padding-left: 1.8%;
+  z-index: 2;
   span {
-
     width: 100%;
   }
+}
+ 
+ 
+
 `;
 
 const mapStateToProps = state => {

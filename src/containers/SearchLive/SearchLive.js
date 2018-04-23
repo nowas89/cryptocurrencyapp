@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 // import CoinOnList from "../../components/CoinOnList/CoinOnList";
-import SearchCoin from "../../components/SearchCoin/SearchCoin"
+import SearchCoin from "../../components/SearchCoin/SearchCoin";
 import classes from "./SearchLive.css";
 import * as actions from "../../store/action";
 
@@ -11,14 +12,11 @@ class SearchLive extends Component {
     searchString: ""
   };
 
-
-
   componentDidMount() {
     this.props.onCoinsInit();
     setTimeout(() => {
-      this.props.onAfterInitialCoins()
+      this.props.onAfterInitialCoins();
     }, 1000);
-  
   }
 
   handleChange = e => {
@@ -41,12 +39,14 @@ class SearchLive extends Component {
       symbol: coin.symbol
     }));
 
-
     let searchString = this.state.searchString.trim().toLowerCase();
 
     if (searchString.length > 0) {
       updatedArray = updatedArray.filter(coin => {
-        return coin.name.toLowerCase().includes(this.state.searchString) || coin.symbol.toLowerCase().includes(this.state.searchString)
+        return (
+          coin.name.toLowerCase().includes(this.state.searchString) ||
+          coin.symbol.toLowerCase().includes(this.state.searchString)
+        );
       });
     }
 
@@ -70,18 +70,35 @@ class SearchLive extends Component {
 
     return (
       <div>
-        <input
-          className={classes.SearchLive}
+        <Inputa
           type="text"
           value={this.state.searchString}
           onChange={e => this.handleChange(e)}
           placeholder="Add currency"
         />
+
         {visibleList}
       </div>
     );
   }
 }
+
+const Inputa = styled.input`
+  width: 150px;
+  margin: 30px 0;
+  border: none;
+  border-bottom: 1px grey solid;
+  font-size: 18px;
+  font-weight: 100;
+  padding: 4px;
+  text-align: center;
+  transition: 0.1s linear;
+
+  &:focus {
+    padding-bottom: 12px;
+    outline: none;
+  }
+`;
 
 const mapStateToProps = state => {
   return {

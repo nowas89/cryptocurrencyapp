@@ -8,10 +8,18 @@ const CoinOnList = props => {
   return (
     <div className={classes.CoinOnList}>
       <div className={classes.CoinOnListItem} onClick={props.clicked}>
-        <span>{props.name}</span>
+        <span>
+          <h4>{props.name}</h4>
+        </span>
         <span>{props.priceBtc}</span>
-        <span>{props.priceUsd}</span>
-        <span>{props.percent}</span>
+        <span>${props.priceUsd}</span>
+        {props.percent > 0 ? (
+          <span style={{ color: "rgba(109, 123, 252, 0.933)" }}>
+            {props.percent}%
+          </span>
+        ) : (
+          <span style={{ color: "red" }}>{props.percent}%</span>
+        )}
       </div>
       <div>
         {props.isOnList ? (
