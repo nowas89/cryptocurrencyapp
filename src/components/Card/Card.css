@@ -1,0 +1,54 @@
+.Card {
+    height: 100%;
+    width: 100%;
+    font-size: 13px;
+    position: relative;
+}
+
+.Button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.CardCointainer>* {
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.CardCointainer>input[type="number"] {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    height: 30px;
+    width: 150px;
+    margin: auto;
+    border: 1px solid #c2c2c2;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.Sections>span {
+    position: relative;
+}
+
+.Sections h3 {
+    position: absolute;
+    right: 0px;
+    top: 12px;
+    margin: auto;
+    font-weight: 400;
+}
+
+.Sections h2 {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.Sections {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px 40px;
+    box-shadow: 0 2px 4px #ccc;
+}
