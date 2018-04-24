@@ -1,54 +1,56 @@
 .Card {
-    height: 100%;
-    width: 100%;
-    font-size: 13px;
-    position: relative;
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
-.Button {
-    position: absolute;
-    left: 20px;
-    top: 20px;
+.CardCointainer > * {
+  box-sizing: border-box;
+  display: inline-block;
 }
+/* 
+.CardCointainer > input[type="number"] {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  height: 30px;
+  width: 150px;
+  /* margin: auto;
+  border: 1px solid #c2c2c2;
+  border-radius: 2px;
+  text-align: center; 
+} */
 
-.CardCointainer>* {
-    box-sizing: border-box;
-    display: inline-block;
-}
-
-.CardCointainer>input[type="number"] {
-    position: absolute;
-    right: 0;
-    top: 12px;
-    height: 30px;
-    width: 150px;
-    margin: auto;
-    border: 1px solid #c2c2c2;
-    border-radius: 2px;
-    text-align: center;
-}
-
-.Sections>span {
-    position: relative;
+.Sections > span {
+  position: relative;
 }
 
 .Sections h3 {
-    position: absolute;
-    right: 0px;
-    top: 12px;
-    margin: auto;
-    font-weight: 400;
+  position: absolute;
+  right: 0px;
+  top: 17px;
+  margin: auto;
+  font-weight: 300;
+  font-size: 14px;
+  font-size: 17px;
 }
 
 .Sections h2 {
-    font-size: 17px;
-    font-weight: 400;
+  font-size: 17px;
+
+  font-weight: 400;
 }
 
 .Sections {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 10px 40px;
-    box-shadow: 0 2px 4px #ccc;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px 40px;
+  outline: 0.3px solid rgba(204, 204, 204, 0.2);
 }
