@@ -7,12 +7,17 @@
   margin: 1px 0;
 }
 .CoinOnListItem {
-  width: 90%;
+  width: 95%;
   height: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+.CoinOnListItem:hover img {
+  transform: scale(1.1);
+  transition: 0.1s all;
+}
+
 .CoinOnListItem span {
   display: flex;
   justify-content: center;
@@ -28,12 +33,35 @@
   font-size: 20px;
 }
 
-.CoinOnList:nth-child(odd) {
+/* .CoinOnList:nth-child(odd) {
   background: white;
+} */
+.CoinOnListImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 800px) {
   .CoinOnList {
     width: 100%;
+  }
+  .CoinOnListItem span {
+    font-size: 12px;
+  }
+  .CoinOnListItem h4 {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 330px) {
+  .CoinOnList {
+    width: 100%;
+  }
+  .CoinOnListItem span {
+    font-size: 10px;
+  }
+  .CoinOnListItem h4 {
+    font-size: 11px;
   }
 }

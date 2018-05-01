@@ -15,6 +15,9 @@ class CoinList extends Component {
         <InfoTable>
          <div>
          <span>
+            <p> Coin: </p>
+          </span>
+         <span>
             <p> Coin name: </p>
           </span>
           <span>
@@ -41,6 +44,8 @@ class CoinList extends Component {
                 isOnList={item.isOnList}
                 listIsOpen={item.listIsOpen}
                 delete={() => this.props.onDelete(item)}
+                icon={item.icon}
+                alerts={item.alerts}
               />
             ))
           : null}
@@ -55,13 +60,23 @@ width: 100%;
 background: rgba(204, 204, 204, .1);
 
 div{
-  width: 90%;
+  width: 95%;
   display: flex;
   justify-content: space-around;
-  padding-left: 1.8%;
   z-index: 2;
   span {
     width: 100%;
+  }
+  p{
+    font-size: 16px;
+    @media (max-width: 600px) {
+      font-size: 12px;
+     
+    }
+    @media (max-width: 330px) {
+      font-size: 9px;
+     
+    }
   }
 }
  

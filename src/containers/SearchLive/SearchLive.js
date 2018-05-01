@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 // import CoinOnList from "../../components/CoinOnList/CoinOnList";
 import SearchCoin from "../../components/SearchCoin/SearchCoin";
-import classes from "./SearchLive.css";
 import * as actions from "../../store/action";
 
 class SearchLive extends Component {
@@ -23,9 +22,17 @@ class SearchLive extends Component {
     this.setState({ searchString: e.target.value.toLowerCase() });
   };
 
+  resetState = (e) => {
+
+  setTimeout(() => {
+    this.setState({searchString: ''})
+  }, 50);
+  }
+
   render() {
     let updatedArray = this.props.coins.map(coin => ({
       id: coin.id,
+      alerts: [],
       name: coin.name,
       price_btc: coin.price_btc,
       price_usd: coin.price_usd,
@@ -36,7 +43,10 @@ class SearchLive extends Component {
       btcUsdVal: 0,
       listIsOpen: false,
       date: new Date().getTime(),
-      symbol: coin.symbol
+      symbol: coin.symbol,
+      icon: `${
+        window.location.origin
+      }/assets/icons/${coin.id.toLowerCase()}.png`
     }));
 
     let searchString = this.state.searchString.trim().toLowerCase();
@@ -63,6 +73,9 @@ class SearchLive extends Component {
                 priceUsd={item.price_usd}
                 percent={item.percent24}
                 clicked={() => this.props.onAddItemToList(item)}
+                icon={item.icon}
+                reset={(e) => this.resetState(e)}
+                alerts={item.alerts}
               />
             ))
           : null;
@@ -97,6 +110,10 @@ const Inputa = styled.input`
   &:focus {
     padding-bottom: 12px;
     outline: none;
+  }
+  @media (max-width: 800px) {
+    width: 90px;
+    font-size: 12px;
   }
 `;
 

@@ -8,6 +8,9 @@ const CoinOnList = props => {
   return (
     <div className={classes.CoinOnList}>
       <div className={classes.CoinOnListItem} onClick={props.clicked}>
+      <span className={classes.CoinOnListImage}>
+          <img  src={props.icon} alt={props.id} />
+        </span>
         <span>
           <h4>{props.name}</h4>
         </span>
@@ -24,7 +27,7 @@ const CoinOnList = props => {
       <div>
         {props.isOnList ? (
           <span onClick={props.delete}>
-            <Button val="X" />
+            <Button val="X"/>
           </span>
         ) : null}
       </div>

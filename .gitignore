@@ -58,3 +58,5 @@ typings/
 .env
 
 src/containers/CoinList/sitemap.xml
+build/*
+src/assets/

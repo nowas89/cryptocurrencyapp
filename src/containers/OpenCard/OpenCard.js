@@ -7,7 +7,7 @@ import Card from "../../components/Card/Card";
 
 class OpenCard extends Component {
   render() {
-    console.log(this.props.itemFromList);
+
     return (
       <div className={classes.OpenCard}>
         {this.props.itemFromList.map(item => (
@@ -25,6 +25,9 @@ class OpenCard extends Component {
             boughtValue={item.boughtValue}
             btcUsdVal={item.btcUsdVal}
             imBack={() => this.props.onTouchingBack(item)}
+            icon={item.icon}
+            alerts={item.alerts}
+            
           />
           : null
         ))}
@@ -44,7 +47,8 @@ const mapDispatchToProps = dispatch => {
     onBtcBoughtVal: (e, item) => dispatch(actions.updateBTC(e, item)),
     onUpdateQuantity: (e, item) => dispatch(actions.updateQuantity(e, item)),
     onUpdateUsdBoughtVal: (e, item) => dispatch(actions.updateUSD(e, item)),
-    onTouchingBack: item => dispatch(actions.imBack(item))
+    onTouchingBack: item => dispatch(actions.imBack(item)),
+    onAddAlert: item => dispatch(actions.addAlert(item))
   };
 };
 

@@ -8,24 +8,7 @@ class Coin extends Component {
   state = {
     isLoaded: false
   };
-  // componentDidMount() {
-  //   fetch("https://api.coinmarketcap.com/v1/ticker/")
-  //     .then(res => res.json())
-  //     .then(resData =>
-  //       resData.map(coin =>
-  //         this.setState({
-  //           coin: {
-  //             id: coin.id,
-  //             name: coin.name,
-  //             price_btc: coin.price_btc,
-  //             price_usd: coin.price_usd,
-  //             percent24: coin.percent_change_24h
-  //           },
-  //           isLoaded: true
-  //         })
-  //       )
-  //     );
-  // }
+ 
   onClickAction = () => {
     alert("asd");
   };

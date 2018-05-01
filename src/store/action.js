@@ -79,3 +79,24 @@ export const deleteItem = (item) => {
 
     }
 }
+export const addAlert = (e, price, name, alerts) => {
+    return {
+        type: actionTypes.ADD_ALERT,
+        e: e,
+        price: price,
+        name: name,
+        alerts: alerts
+  
+
+    }
+}
+export const removeAlert = (alert, name, item) => {
+    return {
+        type: actionTypes.REMOVE_ALERT,
+       alert: alert,
+       name: name,
+       item: item
+  
+
+    }
+}
